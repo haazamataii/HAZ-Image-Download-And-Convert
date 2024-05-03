@@ -9,8 +9,8 @@ Right click an <img> element, go to the HAZ Image Download And Converter in the 
 - [x] Implemented
 
 ###Planned Browser Support
- - [ ]Chrome
- - [x]Firefox
+- [ ]Chrome
+- [x]Firefox
 
 [Canvas] Format is done in canvas
 [Self Implemented] Format is probably not natively supported by browsers and either has or needs self implementation.
