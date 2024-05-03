@@ -5,18 +5,18 @@ Simple Browser Extension to save images as a different format than the one they 
 ###Usage
 Right click an <img> element, go to the HAZ Image Download And Converter in the right-click menu and select a format to save the image as.
 
-- [ ] Not Implemented
-- [x] Implemented
+ - [ ] Not Implemented
+ - [x] Implemented
 
 ###Planned Browser Support
-- [ ]Chrome
-- [x]Firefox
+ - [ ]Chrome
+ - [x]Firefox
 
 [Canvas] Format is done in canvas
 [Self Implemented] Format is probably not natively supported by browsers and either has or needs self implementation.
 
 ###Convert to Formats: [
- - [x] AVIF		[Canvas]
+ - [x] AVIF		[Canvas] (Firefox Min: 93)
  - [x] BMP		[Canvas]
  - [ ] Farbfeld		[Self Implement]
  - [ ] HEIF		[Self Implement]
