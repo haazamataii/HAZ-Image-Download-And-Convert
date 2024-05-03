@@ -2,11 +2,17 @@ Image Download Conversion
 
 Simple Browser Extension to save images as a different format than the one they are in
 
+[ ] Not Implemented
+[x] Implemented
+
 ###Planned Browser Support
  - [ ]Chrome
  - [x]Firefox
 
-###Convert to Formats:
+[Canvas] Format is done in canvas
+[Self Implemented] Format is probably not natively supported by browsers and either has or needs self implementation.
+
+###Convert to Formats: [
  - [x] AVIF		[Canvas]
  - [x] BMP		[Canvas]
  - [ ] Farbfeld		[Self Implement]
