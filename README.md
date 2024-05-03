@@ -2,8 +2,11 @@ Image Download Conversion
 
 Simple Browser Extension to save images as a different format than the one they are in
 
-[ ] Not Implemented
-[x] Implemented
+###Usage
+Right click an <img> element, go to the HAZ Image Download And Converter in the right-click menu and select a format to save the image as.
+
+- [ ] Not Implemented
+- [x] Implemented
 
 ###Planned Browser Support
  - [ ]Chrome
@@ -26,9 +29,11 @@ Simple Browser Extension to save images as a different format than the one they 
 ###Convert From Formats:
  - [x] AVIF (Firefox Min: 93)
  - [x] BMP
+ - [ ] Canvas
  - [x] ICO
  - [x] JPEG
  - [x] PNG
+ - [ ] SVG
  - [x] WebP
 
 ###Planned Features:
