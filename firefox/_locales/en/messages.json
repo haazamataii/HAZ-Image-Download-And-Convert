@@ -1,0 +1,30 @@
+{
+	"menuItemGetAsIs":{
+		"message": "Save Image As Is",
+		"description": "Saves the selected image the way that it is."
+	},
+	"menuItemGetAsJPEG":{
+		"message": "Save Image As JPEG",
+		"description": "Saves the selected image as joint photographic expert group image."
+	},
+	"menuItemGetAsAVIF":{
+		"message": "Save Image As AVIF",
+		"description": "Saves the selected image as a AV1 image file."
+	},
+	"menuItemGetAsBMP":{
+		"message": "Save Image As BMP",
+		"description": "Saves the selected image as a bitmap."
+	},
+	"menuItemGetAsPNG":{
+		"message": "Save Image As PNG",
+		"description": "Saves the selected image as portable network graphics."
+	},
+	"menuItemGetAsWEBP":{
+		"message": "Save Image As WebP",
+		"description": "Saves the selected image as a web picture."
+	},
+	"menuItemGetAsICO":{
+		"message": "Save Image As ICO",
+		"description": "Saves the selected image as an icon."
+	}
+}
