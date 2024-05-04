@@ -9,13 +9,14 @@ Right click an <img> element, go to the HAZ Image Download And Converter in the 
  - [x] Implemented
 
 ###Planned Browser Support
- - [ ]Chrome
+ - [x]Chrome
  - [x]Firefox
 
-[Canvas] Format is done in canvas
+[Native] Format is done with basic browser apis (ie. draw to canvas then save canvas as format)
 [Self Implemented] Format is probably not natively supported by browsers and either has or needs self implementation.
 
-###Convert to Formats: [
+###Firefox Support:
+##Convert to Formats:
  - [x] AVIF		[Canvas] (Firefox Min: 93)
  - [x] BMP		[Canvas]
  - [ ] Farbfeld		[Self Implement]
@@ -26,7 +27,7 @@ Right click an <img> element, go to the HAZ Image Download And Converter in the 
  - [ ] TIFF		[Self Implement]
  - [x] WebP		[Canvas]
 
-###Convert From Formats:
+##Convert From Formats:
  - [x] AVIF (Firefox Min: 93)
  - [x] BMP
  - [ ] Canvas
@@ -35,6 +36,30 @@ Right click an <img> element, go to the HAZ Image Download And Converter in the 
  - [x] PNG
  - [ ] SVG
  - [x] WebP
+
+###Chrome Support
+##Convert to Formats:
+ - [ ] AVIF		[Self Implement]
+ - [ ] BMP		[Native]
+ - [ ] Farbfeld		[Self Implement]
+ - [ ] HEIF		[Self Implement]
+ - [ ] ICO		[Self Implement]
+ - [x] JPEG		[Native]
+ - [x] PNG		[Native]
+ - [ ] TIFF		[Self Implement]
+ - [x] WebP		[Native]
+
+##Convert From Formats:
+ - [ ] AVIF
+ - [ ] BMP
+ - [ ] Canvas
+ - [ ] ICO
+ - [x] JPEG
+ - [x] PNG
+ - [ ] SVG
+ - [x] WebP
+
+
 
 ###Planned Features:
  - [x] Quick convert via context menu

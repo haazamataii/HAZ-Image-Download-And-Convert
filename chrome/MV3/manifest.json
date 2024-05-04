@@ -1,0 +1,22 @@
+{
+	"manifest_version": 3,
+	"name": "Haz Image Download Converter",
+	"version": "0.1",
+	"default_locale": "en",
+	"description": "Gets all webpage images and can convert them to other formats to download.",
+	"author": "hazamataii",
+	"icons":{
+		"48": "icons/HAZIDC.png"
+	},
+	"background": {
+			"service_worker": "serviceWorker.js"
+	},
+	"permissions": [
+		"contextMenus",
+		"downloads",
+		"offscreen"
+	],
+	"host_permissions":[
+		"*://*/*"
+	]
+}
