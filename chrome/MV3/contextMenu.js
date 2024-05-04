@@ -40,15 +40,6 @@ chrome.contextMenus.create(
 	}, onCreated);
 chrome.contextMenus.create(
 	{
-		id: "HazIDCGetAsAVIF",
-		type: "radio",
-		title: chrome.i18n.getMessage("menuItemGetAsAVIF"),
-		contexts: ["image"],
-		checked: true,
-	}, onCreated);
-
-chrome.contextMenus.create(
-	{
 		id: "HazIDCGetAsJPEG",
 		type: "radio",
 		title: chrome.i18n.getMessage("menuItemGetAsJPEG"),

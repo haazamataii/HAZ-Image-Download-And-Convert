@@ -19,12 +19,13 @@
 function getImgAsNativeType(src, type){	//Make gecko deal with conversion
 
 	console.log(src);
-	
+	//make offscreen doc	
 	chrome.offscreen.createDocument({
 		url: 'blank.html',
 		reasons: [chrome.offscreen.Reason.BLOBS],
 		justification: 'Native browser image type conversion',
 	}, function(offScreenDoc) {
+		//get image
 		fetch(src)
 		   .then(response => response.blob())
 		   .then(blob => {
@@ -38,7 +39,6 @@ function getImgAsNativeType(src, type){	//Make gecko deal with conversion
 			//draw image
 			HAZIDCcon.drawImage(img, 0, 0);
 			//convert and download
-
 			HAZIDCcanv.convertToBlob({type: `image/${type}`}).then((blob) => {
 				let reader = new FileReader();
 				reader.readAsDataURL(blob);
@@ -56,60 +56,5 @@ function getImgAsNativeType(src, type){	//Make gecko deal with conversion
 			});
 		});
 	
-	});
-}
-
-
-async function getImgAsNativeTypeAVIF(src, type){	//Make gecko deal with conversion
-	
-	fetch(src)
-.then(response => {
-	if(response.headers.get('Content-Type') !== 'image/avif'){
-		throw new Error('AVIF not supported');
-	}
-	return;
-})
-.then(response => {
-	chrome.offscreen.createDocument({
-		url: 'blank.html',
-		reasons: [chrome.offscreen.Reason.BLOBS],
-		justification: 'Native browser image type conversion',
-	}, function(offScreenDoc) {
-		fetch(src)
-		   .then(response => response.blob())
-		   .then(blob => {
-			return createImageBitmap(blob);
-		   }).then(img => {
-			//make drawspace
-			var HAZIDCcanv = new OffscreenCanvas(img.width, img.height);
-			var HAZIDCcon = HAZIDCcanv.getContext('2d');
-			HAZIDCcanv.height = img.height;
-			HAZIDCcanv.width = img.width;
-			//draw image
-			HAZIDCcon.drawImage(img, 0, 0);
-			//convert and download
-
-			HAZIDCcanv.convertToBlob({type: `image/${type}`}).then((blob) => {
-				let reader = new FileReader();
-				reader.readAsDataURL(blob);
-				reader.onloadend = function(){
-					chrome.downloads.download({saveAs: true, url: reader.result, filename: `image.${type}`}).catch((e) => {
-					HAZIDCcanv = null;
-					offScreenDoc.closeDocument();
-					return;
-				}).then(() => {
-					HAZIDCcanv = null;
-					offScreenDoc.closeDocument();
-					return;
-				});
-				};
-			});
-		});
-	
-	});
-})
-	.catch(e => {
-		console.log(e);
-		return;
 	});
 }
