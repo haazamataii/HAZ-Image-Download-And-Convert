@@ -22,13 +22,10 @@ function onCreated(){}
 
 let browserVersion = parseFloat(navigator.userAgent.split('Firefox/').pop(), 10);
 
-console.log(browserVersion);
-
 //make righClick menu entries
 browser.contextMenus.create(
 	{
 		id: "GetImageAsIs",
-		type: "radio",
 		title: browser.i18n.getMessage("menuItemGetAsIs"),
 		contexts: ["image"],
 		checked: true,
@@ -48,7 +45,6 @@ if(browserVersion >= 93){
 	browser.contextMenus.create(
 		{
 			id: "HazIDCGetAsAVIF",
-			type: "radio",
 			title: browser.i18n.getMessage("menuItemGetAsAVIF"),
 			contexts: ["image"],
 			checked: true,
@@ -61,7 +57,6 @@ if(browserVersion >= 93){
 browser.contextMenus.create(
 	{
 		id: "HazIDCGetAsBMP",
-		type: "radio",
 		title: browser.i18n.getMessage("menuItemGetAsBMP"),
 		contexts: ["image"],
 		checked: true,
@@ -73,7 +68,6 @@ browser.contextMenus.create(
 browser.contextMenus.create(
 	{
 		id: "HazIDCGetAsICO",
-		type: "radio",
 		title: browser.i18n.getMessage("menuItemGetAsICO"),
 		contexts: ["image"],
 		checked: true,
@@ -85,7 +79,6 @@ browser.contextMenus.create(
 browser.contextMenus.create(
 	{
 		id: "HazIDCGetAsJPEG",
-		type: "radio",
 		title: browser.i18n.getMessage("menuItemGetAsJPEG"),
 		contexts: ["image"],
 		checked: true,
@@ -98,7 +91,6 @@ browser.contextMenus.create(
 browser.contextMenus.create(
 	{
 		id: "HazIDCGetAsPNG",
-		type: "radio",
 		title: browser.i18n.getMessage("menuItemGetAsPNG"),
 		contexts: ["image"],
 		checked: true,
@@ -110,7 +102,6 @@ browser.contextMenus.create(
 browser.contextMenus.create(
 	{
 		id: "HazIDCGetAsWebP",
-		type: "radio",
 		title: browser.i18n.getMessage("menuItemGetAsWebP"),
 		contexts: ["image"],
 		checked: true,
@@ -119,16 +110,35 @@ browser.contextMenus.create(
 			"32": "icons/asWebP32.png"
 		}
 	}, onCreated);
-
+browser.contextMenus.create(
+	{
+		id: "sep-2",
+		type: "separator",
+		contexts: ["image"],
+	}, onCreated);
+browser.contextMenus.create(
+	{
+		id: "HazIDCGetAsFF",
+		title: browser.i18n.getMessage("menuItemGetAsFF"),
+		contexts: ["image"],
+		checked: true,
+		icons:{
+			"16": "icons/asFf16.png",
+			"32": "icons/asFf32.png"
+		}
+	}, onCreated);
 //Listener for option getting pressed
 browser.contextMenus.onClicked.addListener((info, tab) => {
-	console.log(info.menuItemId);
 	switch(info.menuItemId){
 		case "GetImageAsIs":
 			//download as is
-			browser.downloads.download({url: `${info.srcUrl}`}).catch((error) =>{
-				return;
-			});
+			if(!info.srcUrl.startsWith("data:")){
+				browser.downloads.download({url: `${info.srcUrl}`}).catch((error) =>{
+					return;
+				});
+			}
+			//cant normally get data: but getImgAsNativeType can so pass it in with it's type
+			getImgAsNativeType(info.srcUrl, info.srcUrl.substr(info.srcUrl.indexOf('/')+1, (info.srcUrl.indexOf(';') - info.srcUrl.indexOf('/')-1)));
 			break;
 		case "HazIDCGetAsAVIF":
 			getImgAsNativeType(info.srcUrl, 'avif');
@@ -147,6 +157,8 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
 			break;
 		case "HazIDCGetAsWebP":
 			getImgAsNativeType(info.srcUrl, 'webp');
-			break;	
+			break;
+		case "HazIDCGetAsFF":
+			getImgAsNonNativeType(info.srcUrl, 'ff', getFF);
 	}
 });

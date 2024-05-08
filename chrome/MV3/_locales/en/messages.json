@@ -26,5 +26,9 @@
 	"menuItemGetAsICO":{
 		"message": "Save Image As ICO",
 		"description": "Saves the selected image as an icon."
+	},
+	"menuItemGetAsFF":{
+		"message": "Save Image As FF",
+		"description": "Saves the selected image as a farbfeld image."
 	}
 }

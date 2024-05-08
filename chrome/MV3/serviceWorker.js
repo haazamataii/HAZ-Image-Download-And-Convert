@@ -17,3 +17,4 @@
  */
 importScripts('contextMenu.js');
 importScripts('imgHandle.js');
+importScripts('utils.js');

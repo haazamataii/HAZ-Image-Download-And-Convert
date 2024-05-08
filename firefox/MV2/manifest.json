@@ -11,7 +11,8 @@
 	"background": {
 			"scripts": [
 			"js/contextMenu.js",
-			"js/imgHandle.js"
+			"js/imgHandle.js",
+			"js/utils.js"
 		]
 	},
 	"permissions": [

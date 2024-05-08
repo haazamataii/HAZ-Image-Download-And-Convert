@@ -17,16 +17,12 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-
 function onCreated(){}
-
-
 
 //make righClick menu entries
 chrome.contextMenus.create(
 	{
 		id: "GetImageAsIs",
-		type: "radio",
 		title: chrome.i18n.getMessage("menuItemGetAsIs"),
 		contexts: ["image"],
 		checked: true,
@@ -41,7 +37,6 @@ chrome.contextMenus.create(
 chrome.contextMenus.create(
 	{
 		id: "HazIDCGetAsJPEG",
-		type: "radio",
 		title: chrome.i18n.getMessage("menuItemGetAsJPEG"),
 		contexts: ["image"],
 		checked: true,
@@ -50,7 +45,6 @@ chrome.contextMenus.create(
 chrome.contextMenus.create(
 	{
 		id: "HazIDCGetAsPNG",
-		type: "radio",
 		title: chrome.i18n.getMessage("menuItemGetAsPNG"),
 		contexts: ["image"],
 		checked: true,
@@ -58,17 +52,37 @@ chrome.contextMenus.create(
 chrome.contextMenus.create(
 	{
 		id: "HazIDCGetAsWebP",
-		type: "radio",
 		title: chrome.i18n.getMessage("menuItemGetAsWebP"),
 		contexts: ["image"],
 		checked: true,
 	}, onCreated);
+chrome.contextMenus.create(
+	{
+		id: "sep-2",
+		type: "separator",
+		contexts: ["image"],
+	}, onCreated);
+chrome.contextMenus.create(
+	{
+		id: "HazIDCGetAsBMP",
+		title: chrome.i18n.getMessage("menuItemGetAsBMP"),
+		contexts: ["image"],
+		checked: true,
+	}, onCreated);
+
+chrome.contextMenus.create(
+	{
+		id: "HazIDCGetAsFF",
+		title: chrome.i18n.getMessage("menuItemGetAsFF"),
+		contexts: ["image"],
+		checked: true,
+	}, onCreated);
+
 
 //Listener for option getting pressed
 chrome.contextMenus.onClicked.addListener((info, tab) => {
 	switch(info.menuItemId){
 		case "GetImageAsIs":
-			//download as is
 			chrome.downloads.download({url: `${info.srcUrl}`}).catch((error) =>{
 				return;
 			});
@@ -81,6 +95,12 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 			break;
 		case "HazIDCGetAsWebP":
 			getImgAsNativeType(info.srcUrl, 'webp');
-			break;	
+			break;
+		case "HazIDCGetAsBMP":
+			getImgAsNonNativeType(info.srcUrl, 'bmp', getBMP, getPixelArrFlipAll);
+			break;
+		case "HazIDCGetAsFF":
+			getImgAsNonNativeType(info.srcUrl, 'ff', getFF, getPixelArray);
+			break;
 	}
 });
